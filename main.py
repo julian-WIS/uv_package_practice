@@ -1,8 +1,12 @@
-import flask
+from flask import Flask
+import os
 
-def main():
-    print("Hello from uv-package-practice!")
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "Hello, World!"
 
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
